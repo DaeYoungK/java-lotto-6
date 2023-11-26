@@ -15,14 +15,14 @@
    - [ ] 로또 생성 기능 추가
    2. LottoStore
    - [ ] 구매한 로또 번호 저장 기능 추가
-   - [ ] 당첨 번호 저장 기능 추가
-   - [ ] 보너스 번호 저장 기능 추가
-   3. Statistic
+   3. WinningNumber
+   - [ ] 당첨 번호와 보너스 번호를 관리하는 기능 구현
+   4. Statistic
    - [ ] 로또 당첨 기준 정보를 보관할 enum 추가
-   4. Calculate
+   5. Calculate
    - [ ] 당첨금액 계산 기능 추가
    - [ ] 수익률 계산 기능 추가
-   5. LogForPrint
+   6. LogForPrint
    - [ ] 결과 출력을 위해 데이터를 받아 통합 및 포맷 지정하는 기능 구현
 
 4. validation
