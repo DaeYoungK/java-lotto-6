@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.Arrays;
+
 public enum Statistic {
 
     THREE(3, 5_000),
@@ -16,5 +18,20 @@ public enum Statistic {
     Statistic(int count, int winnings) {
         this.count = count;
         this.winnings = winnings;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public int getWinnings() {
+        return winnings;
+    }
+
+    public static Statistic getStatistic(int collectCount) {
+        return Arrays.stream(Statistic.values())
+                .filter(statistic -> statistic.count == collectCount)
+                .findFirst()
+                .orElse(NON);
     }
 }
