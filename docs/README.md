@@ -19,7 +19,7 @@
    - [ ] 당첨 번호와 보너스 번호를 관리하는 기능 구현
    4. Statistic
    - [ ] 로또 당첨 기준 정보를 보관할 enum 추가
-   5. Calculate
+   5. Calculator
    - [ ] 당첨금액 계산 기능 추가
    - [ ] 수익률 계산 기능 추가
    6. LogForPrint
