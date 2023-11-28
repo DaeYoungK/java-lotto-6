@@ -27,8 +27,7 @@ public class WinningNumber {
         winning = resultNumbers;
     }
 
-    public void setBonus(String number) {
-        int resultNumber = Integer.parseInt(number);
-        bonus = resultNumber;
+    public void setBonus(int number) {
+        bonus = number;
     }
 }

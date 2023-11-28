@@ -25,7 +25,7 @@ class WinningNumberTest {
     @DisplayName("번호를 받아서 보너스 번호를 지정한다.")
     @Test
     void setBonusNumber() {
-        String number = "7";
+        int number = 7;
 
         winningNumber.setBonus(number);
         int bonus = winningNumber.getBonus();
