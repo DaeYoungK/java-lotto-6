@@ -11,6 +11,7 @@ public class OutputView {
     }
 
     public void printStatistic(String statistic) {
+        System.out.println(STATISTIC_MESSAGE);
         System.out.println(statistic);
     }
 
