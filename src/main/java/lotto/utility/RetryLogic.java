@@ -8,6 +8,7 @@ public class RetryLogic {
         for (int i = 1; i <= MAX_RETRY_COUNT; i++) {
             try {
                 retry.run();
+                break;
             }catch (IllegalArgumentException e) {
                 if (i == MAX_RETRY_COUNT) {
                     throw new IllegalArgumentException();
