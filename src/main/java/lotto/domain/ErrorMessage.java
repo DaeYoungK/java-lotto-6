@@ -16,7 +16,7 @@ public enum ErrorMessage {
     }
 
     public static void getMessage(ErrorMessage errorMessage) {
-        System.out.println(errorMessage.description);
+        System.out.println(ERROR + BLANK + errorMessage.description);
     }
 
 }
