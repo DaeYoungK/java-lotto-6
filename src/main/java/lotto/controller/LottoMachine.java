@@ -28,6 +28,9 @@ public class LottoMachine {
     }
 
     private void statisticResult() {
+        winningNumber.setWinning(inputView.readWinningNumber());
+        winningNumber.setBonus(inputView.readBonusNumber());
+
         List<Lotto> lottos = lottoStore.getLottos();
         Map<Statistic, Integer> resultMap = calculator.collectLotto(lottos, winningNumber);
         double rateOfReturn = calculator.rateOfReturn(price);
