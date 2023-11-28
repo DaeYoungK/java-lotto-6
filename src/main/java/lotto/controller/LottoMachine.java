@@ -2,11 +2,15 @@ package lotto.controller;
 
 import lotto.domain.*;
 import lotto.utility.RandomNumber;
+import lotto.utility.RetryLogic;
+import lotto.validation.Validator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.List;
 import java.util.Map;
+
+import static lotto.utility.RetryLogic.*;
 
 public class LottoMachine {
 
@@ -20,6 +24,7 @@ public class LottoMachine {
     private LogForPrint log = new LogForPrint();
     private Calculator calculator = new Calculator();
     private WinningNumber winningNumber = new WinningNumber();
+    private Validator validator = new Validator();
 
     public void proceed() {
         int count = payPurchase();
@@ -28,8 +33,8 @@ public class LottoMachine {
     }
 
     private void statisticResult() {
-        winningNumber.setWinning(inputView.readWinningNumber());
-        winningNumber.setBonus(inputView.readBonusNumber());
+        retry(() -> winningNumber.setWinning(validator.validWinning(inputView.readWinningNumber())));
+        retry(() -> winningNumber.setBonus(validator.validBonus(inputView.readBonusNumber(),winningNumber.getWinning())));
 
         List<Lotto> lottos = lottoStore.getLottos();
         Map<Statistic, Integer> resultMap = calculator.collectLotto(lottos, winningNumber);
@@ -48,10 +53,8 @@ public class LottoMachine {
     }
 
     private int payPurchase() {
-        price = Integer.parseInt(inputView.readPurchase());
-        if (price % STANDARD_PURCHASE != ZERO) {
-            System.out.println("예외 발생!");
-        }
+        retry(() -> price = validator.validPrice(inputView.readPurchase()));
+
         return price/STANDARD_PURCHASE;
     }
 }
