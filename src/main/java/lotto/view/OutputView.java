@@ -14,4 +14,8 @@ public class OutputView {
         System.out.println(statistic);
     }
 
+    public void printRateOfReturn(String rateOfReturn) {
+        System.out.println(rateOfReturn);
+    }
+
 }
