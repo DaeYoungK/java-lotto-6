@@ -6,14 +6,19 @@ public class RetryLogic {
 
     public static void retry(Retry retry) {
         for (int i = 1; i <= MAX_RETRY_COUNT; i++) {
-            try {
-                retry.run();
-                break;
-            }catch (IllegalArgumentException e) {
-                if (i == MAX_RETRY_COUNT) {
-                    throw new IllegalArgumentException();
-                }
+            if (logic(retry, i)) break;
+        }
+    }
+
+    private static boolean logic(Retry retry, int i) {
+        try {
+            retry.run();
+            return true;
+        }catch (IllegalArgumentException e) {
+            if (i == MAX_RETRY_COUNT) {
+                throw e;
             }
         }
+        return false;
     }
 }
