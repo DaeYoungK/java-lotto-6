@@ -25,8 +25,16 @@ public class Validator {
     public String validWinning(String winning) {
         String removeBlank = getRemoveBlank(winning);
         List<String> numbers = Arrays.stream(removeBlank.split(",")).collect(Collectors.toList());
+        checkCount(numbers);
         numbers.forEach(number -> checkValid(number));
         return removeBlank;
+    }
+
+    private void checkCount(List<String> numbers) {
+        if (numbers.size() != 6) {
+            getMessage(SIZE_ERROR);
+            throw new IllegalArgumentException();
+        }
     }
 
     public int validBonus(String bonus, List<Integer> winningNumbers) {
